@@ -21,6 +21,20 @@ const Orb = lazy(() => import("./bits/Orb"));
 
 const BOT = "https://t.me/Periodmy_bot";
 
+const navLinks = [
+  { href: "#wall", label: "Зачем" },
+  { href: "#look", label: "Как это" },
+  { href: "#inside", label: "Возможности" },
+  { href: "#price", label: "PRO" },
+] as const;
+
+const menuLinks = [
+  ...navLinks,
+  { href: "#tone", label: "Тон" },
+  { href: "#faq", label: "Вопросы" },
+  { href: "#start", label: "Начать" },
+] as const;
+
 const sparkCards = [
   {
     label: "Траты",
@@ -78,6 +92,7 @@ const instead = [
 
 export default function App() {
   const [navSolid, setNavSolid] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setNavSolid(window.scrollY > 20);
@@ -86,26 +101,61 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const close = () => setMenuOpen(false);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("resize", close);
+    document.documentElement.classList.toggle("is-menu", menuOpen);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", close);
+      document.documentElement.classList.remove("is-menu");
+    };
+  }, [menuOpen]);
+
   return (
     <div className="page">
       <SmoothScroll />
-      <header className={`site-nav${navSolid ? " is-solid" : ""}`}>
+      <header className={`site-nav${navSolid || menuOpen ? " is-solid" : ""}`}>
         <div className="wrap nav">
-          <a className="brand" href="#top">
+          <a className="brand" href="#top" onClick={() => setMenuOpen(false)}>
             <PeriodMark />
             <span className="brand-name">Period</span>
           </a>
           <nav className="nav-links">
-            <a href="#wall">Зачем</a>
-            <a href="#look">Как это</a>
-            <a href="#inside">Возможности</a>
-            <a href="#price">PRO</a>
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href}>
+                {link.label}
+              </a>
+            ))}
           </nav>
-          <a className="btn" href={BOT}>
-            Открыть в Telegram
-          </a>
+          <span className="nav-end">
+            <button
+              type="button"
+              className={`nav-toggle${menuOpen ? " is-open" : ""}`}
+              aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
+              aria-expanded={menuOpen}
+              aria-controls="site-menu"
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span />
+              <span />
+            </button>
+          </span>
         </div>
       </header>
+      <div className={`site-menu${menuOpen ? " is-open" : ""}`} id="site-menu" hidden={!menuOpen}>
+        <nav className="site-menu-links" aria-label="Разделы">
+          {menuLinks.map((link) => (
+            <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
       <div className="site-sheet">
       <div className="silk" aria-hidden="true">
         <Suspense fallback={null}>

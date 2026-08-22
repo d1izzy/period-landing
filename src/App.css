@@ -62,9 +62,9 @@
 }
 
 .nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
   padding: 14px 0;
 }
@@ -73,6 +73,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-self: start;
   color: var(--silver-2);
 }
 
@@ -86,6 +87,7 @@
 .nav-links {
   display: flex;
   gap: 22px;
+  justify-self: center;
   color: var(--muted);
   font-size: 13px;
   font-weight: 500;
@@ -93,6 +95,93 @@
 
 .nav-links a:hover {
   color: var(--silver-2);
+}
+
+.nav-end {
+  display: flex;
+  justify-self: end;
+  justify-content: flex-end;
+}
+
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: rgba(14, 14, 14, 0.72);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 1.5px;
+  background: var(--silver-2);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-toggle span:first-child {
+  top: 17px;
+}
+
+.nav-toggle span:last-child {
+  top: 25px;
+}
+
+.nav-toggle.is-open span:first-child {
+  top: 21px;
+  transform: rotate(45deg);
+}
+
+.nav-toggle.is-open span:last-child {
+  top: 21px;
+  transform: rotate(-45deg);
+}
+
+.site-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 18;
+  display: grid;
+  align-content: start;
+  padding: 108px 24px 40px;
+  background: rgba(10, 10, 10, 0.96);
+  backdrop-filter: blur(18px);
+}
+
+.site-menu[hidden] {
+  display: none;
+}
+
+.site-menu-links {
+  display: grid;
+  gap: 4px;
+  width: min(1120px, calc(100% - 8px));
+  margin: 0 auto;
+}
+
+.site-menu-links a {
+  display: block;
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--line);
+  color: var(--silver-2);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+
+.site-menu-links a:hover {
+  color: #fff;
+}
+
+html.is-menu,
+html.is-menu body {
+  overflow: hidden;
 }
 
 .btn {
@@ -658,6 +747,10 @@
     display: none;
   }
 
+  .nav-toggle {
+    display: block;
+  }
+
   .hero-stats,
   .look,
   .wall-split,
@@ -671,7 +764,11 @@
   }
 
   .orbit-split {
-    gap: 28px;
+    gap: 72px;
+  }
+
+  .orbit {
+    margin-top: 8px;
   }
 
   .orbit-copy h2,
