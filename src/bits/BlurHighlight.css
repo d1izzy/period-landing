@@ -1,0 +1,75 @@
+.blur-hl {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+  filter: blur(var(--hl-blur, 8px));
+  opacity: var(--hl-off, 0.3);
+  transition:
+    filter var(--hl-blur-dur, 0.8s) var(--hl-blur-delay, 0s) ease,
+    opacity var(--hl-blur-dur, 0.8s) var(--hl-blur-delay, 0s) ease;
+}
+
+.blur-hl.is-on {
+  filter: none;
+  opacity: 1;
+}
+
+.blur-hl mark {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: baseline;
+  line-height: 1.2;
+  padding: 0.07em 0.16em 0.08em;
+  margin: 0 0.04em;
+  color: #f6f6f4;
+  background-color: transparent;
+  background-image: linear-gradient(
+    180deg,
+    rgba(232, 234, 237, 0.08) 0%,
+    rgba(232, 234, 237, 0.26) 38%,
+    rgba(196, 202, 208, 0.22) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: left center;
+  border-radius: 0.22em;
+}
+
+.blur-hl[data-dir="right"] mark {
+  background-position: right center;
+}
+
+.blur-hl[data-dir="top"] mark {
+  background-position: center top;
+  background-size: 100% 0;
+}
+
+.blur-hl[data-dir="bottom"] mark {
+  background-position: center bottom;
+  background-size: 100% 0;
+}
+
+.blur-hl.is-on mark {
+  background-size: 100% 100%;
+  transition: background-size var(--hl-dur, 1s) var(--hl-delay, 0.4s) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blur-hl[data-dir="top"].is-on mark,
+.blur-hl[data-dir="bottom"].is-on mark {
+  background-size: 100% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blur-hl {
+    filter: none;
+    opacity: 1;
+    transition: none;
+  }
+
+  .blur-hl mark,
+  .blur-hl.is-on mark {
+    background-size: 100% 100%;
+    transition: none;
+  }
+}

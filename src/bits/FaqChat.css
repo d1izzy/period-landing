@@ -1,0 +1,101 @@
+.faq-chat {
+  display: grid;
+  gap: 12px;
+  max-width: 640px;
+  overflow: visible;
+}
+
+.faq-turn {
+  display: grid;
+  gap: 0;
+  overflow: visible;
+}
+
+.faq-a-wrap {
+  justify-self: end;
+  width: min(88%, 100%);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-a-wrap.is-open {
+  grid-template-rows: 1fr;
+}
+
+.faq-a-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.faq-q,
+.faq-a {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  text-align: left;
+}
+
+.faq-q {
+  justify-self: start;
+  max-width: 88%;
+  background: var(--bg-card);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: box-shadow 0.35s ease;
+}
+
+.faq-q.is-on {
+  box-shadow: inset 0 0 0 1px rgba(232, 234, 237, 0.14);
+}
+
+.faq-a {
+  width: 100%;
+  margin-top: 8px;
+  background: var(--bg-elev);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.35s 0.04s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-a-wrap.is-open .faq-a {
+  opacity: 1;
+  transform: none;
+}
+
+.faq-q b,
+.faq-a b {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--silver-dim);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.faq-q span,
+.faq-a p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.faq-a p {
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-a-wrap,
+  .faq-a {
+    transition: none;
+  }
+}

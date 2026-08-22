@@ -1,0 +1,60 @@
+.cmp {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--bg-card);
+  margin-bottom: 18px;
+}
+
+.cmp-row {
+  display: grid;
+  grid-template-columns: 1.5fr 0.7fr 0.7fr;
+  gap: 8px;
+  align-items: center;
+  padding: 16px 20px;
+  border-top: 1px solid var(--line);
+}
+
+.cmp-row.is-head {
+  border-top: 0;
+  color: var(--silver-dim);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cmp-row > :nth-child(2),
+.cmp-row > :nth-child(3) {
+  justify-self: center;
+  text-align: center;
+}
+
+.cmp-row b {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.cmp-yes,
+.cmp-no {
+  font-size: 16px;
+}
+
+.cmp-yes {
+  color: #9fd4a4;
+}
+
+.cmp-no {
+  color: #d09090;
+}
+
+@media (max-width: 640px) {
+  .cmp-row {
+    grid-template-columns: 1fr 48px 48px;
+    padding: 14px 14px;
+  }
+
+  .cmp-row b {
+    font-size: 14px;
+  }
+}

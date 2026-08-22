@@ -1,0 +1,7 @@
+.soft-star {
+  display: inline-block;
+  flex: 0 0 auto;
+  overflow: visible;
+  filter: drop-shadow(0 0 4px rgba(232, 234, 237, 0.35));
+  vertical-align: -0.12em;
+}

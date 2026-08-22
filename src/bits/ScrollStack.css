@@ -1,0 +1,46 @@
+.scroll-stack {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 24px));
+  margin: 0 auto 8vh;
+}
+
+.scroll-stack-pin {
+  position: sticky;
+  top: var(--stack-top, 72px);
+  padding-bottom: 18vh;
+}
+
+.scroll-stack-card {
+  min-height: calc(100dvh - 108px);
+  padding: 36px 32px 32px;
+  border-radius: 28px;
+  border: 1px solid var(--line-strong);
+  background: rgba(16, 16, 16, 0.92);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+  transform-origin: top center;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+}
+
+.scroll-stack-card .chapter {
+  min-height: 0;
+  padding: 0;
+  display: block;
+}
+
+.scroll-stack-card .chapter h2 {
+  margin-bottom: 22px;
+}
+
+@media (max-width: 860px) {
+  .scroll-stack-card {
+    min-height: 0;
+    padding: 24px 18px 22px;
+  }
+
+  .scroll-stack-pin {
+    padding-bottom: 10vh;
+    top: 16px !important;
+  }
+}
