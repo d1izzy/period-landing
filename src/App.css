@@ -743,6 +743,10 @@ html.is-menu body {
 }
 
 @media (max-width: 860px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+  }
+
   .nav-links {
     display: none;
   }
