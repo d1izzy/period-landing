@@ -707,13 +707,17 @@ html.is-menu body {
 }
 
 .foot8-cols b {
-  display: block;
+  display: inline-block;
   margin-bottom: 12px;
+  padding: 5px 10px;
   color: var(--silver-2);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  background: rgba(232, 234, 237, 0.07);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(232, 234, 237, 0.1);
 }
 
 .foot8-cols a,

@@ -65,7 +65,7 @@ const sparkCards = [
 
 const compareRows = [
   { name: "Текст, голос и фото еды", start: true, pro: true },
-  { name: "Mini App без пароля", start: true, pro: true },
+  { name: "Mini App в Telegram", start: true, pro: true },
   { name: "5 AI-разборов в день", start: true, pro: true },
   { name: "Безлимит AI", start: false, pro: true },
   { name: "Дашборд расходов", start: false, pro: true },
@@ -87,7 +87,7 @@ const never = [
 const instead = [
   "День вышел плотнее плана. Бывает — завтра просто вернёмся к ритму.",
   "Вернуться можно с одной фразы. Прошлое догонять не нужно.",
-  "Лимит тихий: остаток виден, ноты не пишет.",
+  "Остаток бюджета виден сразу — без пугающих уведомлений.",
 ];
 
 export default function App() {
@@ -171,8 +171,8 @@ export default function App() {
           <BlurText text="Жизнь и расходы. Пишете _как думаете._" />
           <Reveal variant="blur" delay={0.15}>
             <p className="lead">
-              Напишите или надиктуйте. Встречи, задачи, еда и траты разложатся сами — в боте и Mini
-              App. Пароль не нужен.
+              Period — Telegram-бот и Mini App для учёта расходов, еды, задач и встреч. Пишете
+              текстом или голосом — AI раскладывает по категориям.
             </p>
           </Reveal>
           <Reveal variant="up" delay={0.28}>
@@ -204,8 +204,10 @@ export default function App() {
             </Reveal>
             <Reveal variant="scale" delay={0.32}>
               <div className="hero-stat">
-                <strong>0</strong>
-                <span>паролей. Вход через Telegram</span>
+                <strong>
+                  <CountUp to={4} />
+                </strong>
+                <span>области: деньги, еда, дела, встречи</span>
               </div>
             </Reveal>
           </div>
@@ -217,22 +219,30 @@ export default function App() {
           <div className="wall-split">
             <div>
               <Reveal variant="blur">
-                <p className="chap">01 · Стена</p>
+                <p className="chap">01 · Зачем</p>
                 <h2>
                   Формы стоят между вами и тем, <em>что уже произошло</em>
                 </h2>
               </Reveal>
               <div className="prose">
                 <BlurHighlight highlightedBits={["поля, категории, граммы"]}>
-                  Открываешь трекер — поля, категории, граммы. Закрываешь. Делаешь вывод: «мне не до
-                  этого».
+                  Обычные трекеры требуют поля, категории, граммы. Закрыл приложение — и запись
+                  потерялась.
                 </BlurHighlight>
-                <BlurHighlight highlightedBits={["одна фраза в Telegram"]}>
-                  Дело не в дисциплине. Стена из таблиц. Period её обходит: одна фраза в Telegram
-                  становится встречей, тратой и задачей. Никто не спрашивает, почему не заполнили форму.
+                <BlurHighlight
+                  highlightedBits={[
+                    "текст, голос и фото",
+                    "трата, встреча и запись о еде",
+                    "бюджет, ккал, вода и дела",
+                  ]}
+                >
+                  Period принимает текст, голос и фото. «500 на такси, встреча завтра в 15:00, борщ на
+                  обед» → трата, встреча и запись о еде. Фото тарелки — блюдо и калории. В Mini App:
+                  бюджет, ккал, вода и дела.
                 </BlurHighlight>
-                <BlurHighlight highlightedBits={["Дневник периода"]}>
-                  Это не банк и не лента. Дневник периода.
+                <BlurHighlight highlightedBits={["Не банк", "не медицина", "Дневник периода"]}>
+                  Не банк, не переводы, не медицина. Дневник периода — деньги, питание и задачи в
+                  одном Telegram-боте.
                 </BlurHighlight>
               </div>
             </div>
@@ -302,7 +312,7 @@ export default function App() {
                   </li>
                   <li>
                     <b>03</b>
-                    <span>Лимит тихий: остаток виден, нотаций нет</span>
+                    <span>Остаток бюджета на экране — без давления и уведомлений</span>
                   </li>
                 </ul>
               </div>
@@ -398,7 +408,7 @@ export default function App() {
               <em> Дальше Period.</em>
             </h2>
             <BlurHighlight highlightedBits={["как думаете"]}>
-              Про встречу, трату, обед — напишите как думаете. Бот разложит сам, пароль не нужен.
+              Про встречу, трату, обед — напишите как думаете. Бот разложит сам.
             </BlurHighlight>
             <a className="btn" href={BOT}>
               Открыть в Telegram
