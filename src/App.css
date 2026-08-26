@@ -6,6 +6,7 @@
   position: relative;
   z-index: 2;
   overflow: clip;
+  margin-bottom: var(--foot8-h, 320px);
   background: #0a0a0a;
   border-radius: 0 0 40px 40px;
   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
@@ -641,18 +642,16 @@ html.is-menu body {
 }
 
 .foot8 {
-  position: sticky;
+  position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
   z-index: 1;
   margin: 0;
-  padding: 12px;
+  padding: 12px 12px 24px;
   background: transparent;
   border: 0;
   text-align: left;
-}
-
-.foot8:focus-within {
-  z-index: 3;
 }
 
 .foot8-inner {

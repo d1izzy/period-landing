@@ -95,6 +95,24 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    const foot = document.querySelector<HTMLElement>(".foot8");
+    if (!foot) return;
+
+    const sync = () => {
+      document.documentElement.style.setProperty("--foot8-h", `${foot.offsetHeight}px`);
+    };
+
+    sync();
+    const ro = new ResizeObserver(sync);
+    ro.observe(foot);
+    window.addEventListener("resize", sync);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", sync);
+    };
+  }, []);
+
+  useEffect(() => {
     const onScroll = () => setNavSolid(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
