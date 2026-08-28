@@ -9,7 +9,6 @@
   margin-bottom: var(--foot8-h, 320px);
   background: #0a0a0a;
   border-radius: 0 0 40px 40px;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
 }
 
 .silk {
@@ -743,6 +742,14 @@ html.is-menu body {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 13px;
+}
+
+.foot8-copy a {
+  color: var(--silver-2);
+}
+
+.foot8-copy a:hover {
+  color: #fff;
 }
 
 @media (max-width: 860px) {

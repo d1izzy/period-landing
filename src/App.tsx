@@ -14,12 +14,12 @@ import SoftStar from "./bits/SoftStar";
 import SpotlightCard from "./bits/SpotlightCard";
 import TextPath from "./bits/TextPath";
 import PeriodMark from "./PeriodMark";
+import SiteFooter from "./SiteFooter";
+import { BOT } from "./site";
 import "./App.css";
 
 const Silk = lazy(() => import("./bits/Silk"));
 const Orb = lazy(() => import("./bits/Orb"));
-
-const BOT = "https://t.me/Periodmy_bot";
 
 const navLinks = [
   { href: "#wall", label: "Зачем" },
@@ -30,7 +30,7 @@ const navLinks = [
 
 const menuLinks = [
   ...navLinks,
-  { href: "#tone", label: "Тон" },
+  { href: "#tone", label: "Как пишет" },
   { href: "#faq", label: "Вопросы" },
   { href: "#start", label: "Начать" },
 ] as const;
@@ -343,7 +343,7 @@ export default function App() {
 
         <section className="wrap chapter" id="tone">
           <Reveal variant="tilt">
-            <p className="chap">04 · Каким тоном</p>
+            <p className="chap">04 · Как пишет бот</p>
             <h2>
               Поддержка <em>вместо</em> вины
             </h2>
@@ -437,42 +437,7 @@ export default function App() {
       </main>
       </div>
 
-      <footer className="foot8">
-        <div className="foot8-inner">
-          <div className="foot8-top">
-            <div className="foot8-brand-block">
-              <a className="brand foot8-brand" href="#top">
-                <PeriodMark size={26} />
-                <span className="brand-name">Period</span>
-              </a>
-              <a className="foot8-social" href={BOT} aria-label="Открыть Telegram">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M21.7 4.3c.3-.9-.5-1.6-1.3-1.3L2.8 9.4c-.9.3-.9 1.6.1 1.8l4.6 1.1 1.8 5.7c.3.8 1.3 1 1.8.4l2.6-2.6 4.4 3.3c.7.5 1.7.1 1.9-.7z" />
-                </svg>
-              </a>
-            </div>
-            <div className="foot8-cols">
-              <div>
-                <b>Продукт</b>
-                <a href="#look">Как это выглядит</a>
-                <a href="#inside">Что внутри</a>
-                <a href="#price">Старт и PRO</a>
-              </div>
-              <div>
-                <b>Бот</b>
-                <a href={BOT}>Открыть в Telegram</a>
-                <a href="#faq">Частые вопросы</a>
-              </div>
-              <div>
-                <b>Важно</b>
-                <span>Не банк и не переводы</span>
-                <span>Не медицинский сервис</span>
-              </div>
-            </div>
-          </div>
-          <p className="foot8-copy">© 2026 Period</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

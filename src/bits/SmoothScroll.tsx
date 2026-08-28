@@ -26,6 +26,13 @@ export default function SmoothScroll() {
     };
 
     document.addEventListener("click", onClick);
+
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) lenis.scrollTo(el, { offset: -8, duration: 0.8 });
+    }
+
     return () => {
       document.removeEventListener("click", onClick);
       lenis.destroy();
